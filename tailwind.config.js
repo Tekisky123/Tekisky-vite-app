@@ -1,5 +1,3 @@
-// tailwind.config.js
-
 import colors from 'tailwindcss/colors';
 
 export default {
@@ -42,6 +40,13 @@ export default {
           light: '#F0F2F9',
         },
       },
+      transitionDuration: {
+        '700': '700ms',
+        '1000': '1000ms', // Added for smoother animations
+      },
+      transitionTimingFunction: {
+        'in-out-cubic': 'cubic-bezier(0.4, 0, 0.2, 1)', // Added for smooth cubic bezier transitions
+      },
       boxShadow: {
         signUp: '0px 5px 10px rgba(4, 10, 34, 0.2)',
         one: '0px 2px 3px rgba(7, 7, 77, 0.05)',
@@ -60,6 +65,13 @@ export default {
       dropShadow: {
         three: '0px 5px 15px rgba(6, 8, 15, 0.05)',
       },
+    },
+  },
+  variants: {
+    extend: {
+      scale: ['group-hover'],
+      opacity: ['group-hover'],
+      translate: ['group-hover'],
     },
   },
   plugins: [],

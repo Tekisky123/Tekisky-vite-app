@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import boy from "../images/blog/boy (2).png";
 import girl from "../images/blog/woman.png";
-import Breadcrumb from "../Common/Breadcrumb";
 import baseURL from "../Common/Api"
+import Company from "../Components/Company";
 
 
 // SkeletonLoadingCard Component
@@ -12,7 +12,7 @@ const SkeletonLoadingCard = () => {
   return (
     <div
       role="status"
-      className="group relative mb-10 animate-pulse overflow-hidden rounded-lg bg-gradient-to-r from-gray-300 to-gray-400 shadow-lg duration-300 dark:from-gray-700 dark:to-gray-800"
+      className="group relative mb-10  animate-pulse overflow-hidden rounded-lg bg-gradient-to-r from-gray-300 to-gray-400 shadow-lg duration-300 dark:from-gray-700 dark:to-gray-800"
     >
       <div className="profile-container relative m-5 flex aspect-square w-full items-center justify-center">
         <div className="h-full w-full rounded-md bg-gradient-to-r from-gray-400 to-gray-500 dark:from-gray-600 dark:to-gray-700"></div>
@@ -84,11 +84,14 @@ const Alumni = () => {
 
   return (
     <>
-      <div className="">
-        <Breadcrumb pageName="Alumni" description="" />
-      </div>
+          <Company />
 
-      <section className="pb-[120px] pt-[120px]">
+       <div className="w-full mx-auto text-center mb-24 mt-14">
+          <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl md:text-5xl">
+           Alumni&lsquo;s
+          </h2>
+        </div>
+      <section className="">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             {loading

@@ -1,14 +1,14 @@
 import React from "react";
 import WebDevelopment from "../images/hero/web-development-coding-programming-internet-technology-business-concept-web-development-coding-programming-internet-technology-121903546.webp";
-import CorporateTraining from "../images/hero/corporeate training.png"
-import CorporateTrainers from "../images/hero/corporate_training.jpg"
-import industrialconsultancyservices from "../images/hero/industrial-consultancy-services.png"
-import ITSupportServices from "../images/hero/IT-Support-Services-Detailed-IT-Services.jpg"
-import gradient from "../images/hero/gradient-ui-ux-background_23-2149065783.avif"
-import software from "../images/hero/software-development-button.jpg"
-import gradientui from "../images/hero/gradient-ui-ux-background_23-2149052117.avif"
-import img10 from "../images/blog/960x0.webp"
-import img11 from "../images/hero/960x0.webp"
+import CorporateTraining from "../images/hero/corporeate training.png";
+import CorporateTrainers from "../images/hero/corporate_training.jpg";
+import industrialconsultancyservices from "../images/hero/industrial-consultancy-services.png";
+import ITSupportServices from "../images/hero/IT-Support-Services-Detailed-IT-Services.jpg";
+import gradient from "../images/hero/gradient-ui-ux-background_23-2149065783.avif";
+import software from "../images/hero/software-development-button.jpg";
+import gradientui from "../images/hero/gradient-ui-ux-background_23-2149052117.avif";
+import img10 from "../images/blog/960x0.webp";
+import img11 from "../images/hero/960x0.webp";
 const testimonialData = [
   {
     id: 1,
@@ -17,20 +17,7 @@ const testimonialData = [
       "Our web development services are tailored to your specific requirements, ensuring that your online presence reflects your brand identity and values. Whether you need a custom website or an e-commerce platform, we have the expertise to bring your vision to life.",
     image: WebDevelopment,
   },
-  {
-    id: 2,
-    name: "Corporate Training:",
-    content:
-      "Enhance your team's skills and productivity with our comprehensive corporate training programs. We offer customized training solutions that address your specific business needs and help your employees stay ahead of the curve.",
-    image: CorporateTraining,
-  },
-  {
-    id: 3,
-    name: "Corporate Trainers:",
-    content:
-      "Our experienced corporate trainers are experts in their respective fields. They provide engaging and impactful training sessions that equip your team with the knowledge and skills they need to excel in their roles.",
-    image: CorporateTrainers,
-  },
+
   {
     id: 4,
     name: "IT Consultancy:",
@@ -80,6 +67,20 @@ const testimonialData = [
       "Our e-commerce solutions are designed to help you succeed in the competitive online marketplace. From website development to digital marketing, we provide end-to-end solutions that drive sales and maximize ROI.",
     image: img11,
   },
+  {
+    id: 2,
+    name: "Corporate Training:",
+    content:
+      "Enhance your team's skills and productivity with our comprehensive corporate training programs. We offer customized training solutions that address your specific business needs and help your employees stay ahead of the curve.",
+    image: CorporateTraining,
+  },
+  {
+    id: 3,
+    name: "Corporate Trainers:",
+    content:
+      "Our experienced corporate trainers are experts in their respective fields. They provide engaging and impactful training sessions that equip your team with the knowledge and skills they need to excel in their roles.",
+    image: CorporateTrainers,
+  },
 ];
 
 const SingleTestimonial = ({ testimonial }) => {
@@ -111,7 +112,7 @@ const Services = () => {
     <section className="relative z-10 bg-gray-light py-16 dark:bg-bg-color-dark md:py-20 lg:py-28">
       <div className="container">
         <div className={`w-9/12 mb-10 ${"mx-auto text-center"}`}>
-          <h2 className="mb-16 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] mt-8">
+          <h2 className="mb-12 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] mt-8">
             Our Services
           </h2>
           <p className="text-base leading-relaxed text-body-color md:text-lg   text-center">

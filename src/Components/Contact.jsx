@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import LoaderSmall from "../Loader/LoaderSmall";
@@ -55,7 +55,7 @@ const Contact = () => {
         Swal.fire({
           icon: "success",
           title: "Success!",
-          text: "Email sent successfully",
+          text: "Email sent successfully, Check Your Email inbox",
         }).then(() => {
           setFormData({
             name: "",

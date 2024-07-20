@@ -1,4 +1,3 @@
-import React from "react";
 import Codingworkshop from "../images/hero/Coding workshop-bro.svg"
 
 const Section2 = () => {
@@ -13,7 +12,7 @@ const Section2 = () => {
       <div className="container">
         <div className="-mx-4 flex flex-wrap items-center">
           <div className="w-full px-4 lg:w-1/2">
-            <div className="relative mx-auto mb-12 aspect-[35/24] max-w-[700px] text-center lg:m-0">
+            <div className="relative mx-auto mb-12  max-w-[700px] text-center lg:m-0">
               <img
                 src={Codingworkshop}
                 alt=""

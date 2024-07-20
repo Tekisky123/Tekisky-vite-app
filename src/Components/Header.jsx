@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import logo from "../images/logo/WhatsApp_Image_2024-04-30_at_12.39.09_86de1ffc-removebg-preview.png";
 
@@ -35,11 +35,12 @@ const Header = () => {
   const menuData = [
     { id: 1, title: "Home", path: "/" },
     { id: 2, title: "Services", path: "/services" },
-    { id: 3, title: "Courses", path: "/courses" },
-    { id: 4, title: "Alumni", path: "/alumni" },
-    { id: 5, title: "Tekisky Consultancy", path: "/consultancy" },
-    { id: 6, title: "About", path: "/about" },
-    { id: 7, title: "Contact Us", path: "/contact-us" },
+    { id: 3, title: "Our Product", path: "/products" },
+    { id: 4, title: "Trainings", path: "/courses" },
+    // { id: 5, title: "Alumni", path: "/alumni" },
+    { id: 6, title: "Tekisky Consultancy", path: "/consultancy" },
+    { id: 7, title: "About", path: "/about" },
+    { id: 8, title: "Contact Us", path: "/contact-us" },
   ];
 
   return (

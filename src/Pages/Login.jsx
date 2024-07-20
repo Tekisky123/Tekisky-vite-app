@@ -3,8 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import LoaderSmall from "../Loader/LoaderSmall";
 import { useNavigate } from "react-router-dom";
-import baseURL from "../Common/Api"
-
+import baseURL from "../Common/Api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,7 +15,6 @@ const Login = () => {
   const [blockedTime, setBlockedTime] = useState(null);
 
   useEffect(() => {
-    // Check if the user is blocked and calculate the remaining time
     const blockInfo = JSON.parse(localStorage.getItem("blockInfo"));
     if (blockInfo && blockInfo.blockedUntil) {
       const currentTime = new Date().getTime();
@@ -24,7 +22,6 @@ const Login = () => {
         setIsBlocked(true);
         setBlockedTime(blockInfo.blockedUntil);
       } else {
-        // Unblock the user if the block time has passed
         localStorage.removeItem("blockInfo");
       }
     }
@@ -63,10 +60,10 @@ const Login = () => {
 
     setShowLoader(true);
     try {
-      const response = await axios.post(
-        `${baseURL}user/login`,
-        { mobileNumber, password }
-      );
+      const response = await axios.post(`${baseURL}user/login`, {
+        mobileNumber,
+        password,
+      });
       const { token, userType, user } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("userType", userType);
@@ -81,12 +78,11 @@ const Login = () => {
         timer: 1500,
       });
 
-      if (userType === "admin") {
+      if (userType == "admin") {
         navigate("/dashboard");
-      } else if (userType === "teacher") {
+      } else if (userType == "teacher") {
         navigate(`/teacherDashboard/${user._id}`);
       } else {
-        // Handle other user types if needed
         console.log("Unknown userType:", userType);
       }
     } catch (error) {

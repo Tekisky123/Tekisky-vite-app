@@ -5,11 +5,10 @@ import { useNavigate } from "react-router-dom";
 import AddStudentModal from "../Components/AddStudentModal";
 import AddUserModel from "../Components/AddUserModel";
 import ConsultancyApplications from "../Components/ConsultancyApplications";
-import baseURL from "../Common/Api"
-
+import baseURL from "../Common/Api";
 
 const Dashboard = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [students, setStudents] = useState([]);
   const [users, setUsers] = useState([]);
   const [showStudentModal, setShowStudentModal] = useState(false);
@@ -25,7 +24,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-
     if (!storedToken) {
       Swal.fire({
         title: "Session Expired",
@@ -37,7 +35,7 @@ const Dashboard = () => {
       });
     } else {
       setToken(storedToken);
-  
+
       const logoutTimeout = 10 * 60 * 60 * 1000;
       setTimeout(() => {
         localStorage.removeItem("token");
@@ -47,7 +45,7 @@ const Dashboard = () => {
           icon: "error",
           confirmButtonText: "OK",
         }).then(() => {
-            navigate("/login");
+          navigate("/login");
         });
       }, logoutTimeout);
     }
@@ -69,15 +67,17 @@ const Dashboard = () => {
     try {
       const response = await axios.get(
         `${baseURL}selectedStudent/getSelectedStudent`,
-        {
-          headers: {
-            Authorization: token,
-          },
-        },
+        { headers: { Authorization: token } }
       );
       setStudents(response.data.reverse());
     } catch (error) {
       console.error("Error fetching students:", error);
+      Swal.fire({
+        title: "Error",
+        text: "Failed to fetch students. Please try again later.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
   };
 
@@ -91,14 +91,11 @@ const Dashboard = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(
-        `${baseURL}user/getAllUsers`,
-        {
-          headers: {
-            Authorization: token,
-          },
+      const response = await axios.get(`${baseURL}user/getAllUsers`, {
+        headers: {
+          Authorization: token,
         },
-      );
+      });
       setUsers(response.data.users.users);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -123,14 +120,11 @@ const Dashboard = () => {
 
     if (confirmed.isConfirmed) {
       try {
-        await axios.delete(
-          `${baseURL}user/delete/${id}`,
-          {
-            headers: {
-              Authorization: token,
-            },
+        await axios.delete(`${baseURL}user/delete/${id}`, {
+          headers: {
+            Authorization: token,
           },
-        );
+        });
         setUsers(users.filter((user) => user._id !== id));
         Swal.fire("Deleted!", "User has been deleted.", "success");
       } catch (error) {
@@ -153,14 +147,11 @@ const Dashboard = () => {
 
     if (confirmed.isConfirmed) {
       try {
-        await axios.delete(
-          `${baseURL}selectedStudent/delete/${id}`,
-          {
-            headers: {
-              Authorization: token,
-            },
+        await axios.delete(`${baseURL}selectedStudent/delete/${id}`, {
+          headers: {
+            Authorization: token,
           },
-        );
+        });
         setStudents(students.filter((student) => student._id !== id));
         Swal.fire("Deleted!", "Student has been deleted.", "success");
       } catch (error) {
@@ -192,15 +183,11 @@ const Dashboard = () => {
 
   const handleSaveStudent = async (index, id) => {
     try {
-      await axios.put(
-        `${baseURL}selectedStudent/update/${id}`,
-        editedStudent,
-        {
-          headers: {
-            Authorization: token,
-          },
+      await axios.put(`${baseURL}selectedStudent/update/${id}`, editedStudent, {
+        headers: {
+          Authorization: token,
         },
-      );
+      });
       const updatedStudents = [...students];
       updatedStudents[index] = editedStudent;
       setStudents(updatedStudents);
@@ -324,7 +311,7 @@ const Dashboard = () => {
                                 onChange={(e) =>
                                   handleEditChange(
                                     "companyName",
-                                    e.target.value,
+                                    e.target.value
                                   )
                                 }
                               />
@@ -340,7 +327,7 @@ const Dashboard = () => {
                                 onChange={(e) =>
                                   handleEditChange(
                                     "designation",
-                                    e.target.value,
+                                    e.target.value
                                   )
                                 }
                               />
@@ -518,7 +505,7 @@ const Dashboard = () => {
                                   onChange={(e) =>
                                     handleEditChange(
                                       "companyName",
-                                      e.target.value,
+                                      e.target.value
                                     )
                                   }
                                 />
@@ -535,7 +522,7 @@ const Dashboard = () => {
                                   onChange={(e) =>
                                     handleEditChange(
                                       "designation",
-                                      e.target.value,
+                                      e.target.value
                                     )
                                   }
                                 />
@@ -552,7 +539,7 @@ const Dashboard = () => {
                                   onChange={(e) =>
                                     handleEditChange(
                                       "education",
-                                      e.target.value,
+                                      e.target.value
                                     )
                                   }
                                 />

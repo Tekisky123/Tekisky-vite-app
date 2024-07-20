@@ -1,9 +1,9 @@
-import React from "react";
-import mern from "../images/blog/mern.png"
-import mernwithPyDSA from "../images/blog/mernwithPy&DSA.png"
-import datascience from "../images/blog/960x0.webp"
-import frontend from "../images/blog/1679683081898.png"
-import nodejs from "../images/blog/0_TrneyH4gnbEHvgGM.png"
+import mern from "../images/blog/mern.png";
+import mernwithPyDSA from "../images/blog/mernwithPy&DSA.png";
+import datascience from "../images/blog/960x0.webp";
+import frontend from "../images/blog/1679683081898.png";
+import nodejs from "../images/blog/0_TrneyH4gnbEHvgGM.png";
+import Alumni from "./Alumni";
 
 const featuresData = [
   {
@@ -102,24 +102,28 @@ const SingleFeature = ({ feature }) => {
 
 const Courses = () => {
   return (
-    <section id="features" className="py-16 md:py-20 lg:py-28">
-      <div className="container">
-        <div className={`w-full mx-auto text-center`}>
-          <h2 className="mb-16 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] mt-8">
-            Pick a Course to Get Started
-          </h2>
-          <p className="text-base leading-relaxed text-body-color md:text-lg">
-            Popular topics to learn.
-          </p>
-        </div>
+    <>
+      <section id="features" className="py-16 md:py-20 lg:py-28">
+        <div className="container">
+          <div className={`w-full mx-auto text-center`}>
+            <h2 className="mb-16 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] mt-8">
+              Explore Our Training Programs
+            </h2>
+            <p className="text-base mb-5 leading-relaxed text-body-color md:text-lg">
+              Discover popular topics and enhance your skills with our
+              expert-led training programs.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-          {featuresData.map((feature) => (
-            <SingleFeature key={feature.id} feature={feature} />
-          ))}
+          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+            {featuresData.map((feature) => (
+              <SingleFeature key={feature.id} feature={feature} />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+        <Alumni />
+    </>
   );
 };
 
