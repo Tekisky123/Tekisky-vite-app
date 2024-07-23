@@ -208,13 +208,28 @@ const ConsultancyApplications = () => {
       console.error("Error deleting applicant:", error);
     }
   };
-
-  const handleShare = (applicantId) => {
+  const handleShare = async (applicantId) => {
     const applicationUrl = `${window.location.origin}/singleApplication/${applicantId}`;
-    navigator.clipboard.writeText(applicationUrl).then(() => {
-      setToastMessage("Application link copied to clipboard!");
-      setShowToast(true);
-    });
+
+    navigator.clipboard
+      .writeText(applicationUrl)
+      .then(() => {
+        setToastMessage("Application link copied to clipboard!");
+        setShowToast(true);
+      })
+      .catch((error) => {
+        console.error("Failed to copy the link:", error);
+      });
+
+    try {
+      await navigator.share({
+        title: "Application Link",
+        text: "Check out this application:",
+        url: applicationUrl,
+      });
+    } catch (error) {
+      console.error("Error sharing the link:", error);
+    }
   };
 
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -295,7 +310,7 @@ const ConsultancyApplications = () => {
             {visibleApplicants.map((applicant) => (
               <div
                 key={applicant._id}
-                className="mb-6 transform overflow-hidden rounded-lg bg-white p-6 shadow-lg transition duration-300 hover:scale-105 hover:shadow-xl"
+                className="mb-6 transform overflow-hidden rounded-lg bg-blue-50 border p-6  transition duration-300  shadow-lg"
               >
                 <div className="mb-4">
                   <p className="mb-2 text-gray-800">
@@ -339,7 +354,9 @@ const ConsultancyApplications = () => {
                   <p className="mb-4 text-gray-700">
                     <strong>Application Status:</strong>{" "}
                     <div
-                      className={`w-40 border ${getStatusClassName(applicant.status)}`}
+                      className={`w-40 border ${getStatusClassName(
+                        applicant.status
+                      )}`}
                     >
                       {applicant.status}
                     </div>
@@ -480,13 +497,19 @@ const ConsultancyApplications = () => {
                       )}
                     </div>
                   </td>
-                  <td className="w-10 border px-2 py-2">
+                  <td className="relative w-10 border px-2 py-2 group">
                     <div
-                      className={`border ${getStatusClassName(applicant.status)}`}
+                      className={`border ${getStatusClassName(
+                        applicant.status
+                      )}`}
                     >
                       {applicant.status}
                     </div>
+                    <span className="absolute left-1/2 top-2 mb-2 hidden w-max -translate-x-1/2 rounded bg-gray-800 px-2 py-1 text-sm text-white group-hover:block">
+                      {applicant.status}
+                    </span>
                   </td>
+
                   <td className="border px-8 py-2 ">
                     <Link
                       className="resume-download"
@@ -497,31 +520,42 @@ const ConsultancyApplications = () => {
                     </Link>
                   </td>
 
-                  <td className="d-flex w-40 border px-4 py-2 ">
+                  <td className="d-flex w-40 border px-4 py-2 relative">
                     <button
                       onClick={() => handleViewMore(applicant)}
-                      className=" m-1   rounded-md bg-green-500 px-2 py-2 text-white hover:bg-green-600"
+                      className="group m-1 rounded-md bg-green-500 px-2 py-2 text-white hover:bg-green-600 relative"
                     >
                       <FaFolderOpen className="size-6" />
+                      <span className="absolute left-1/2 bottom-full mb-2 hidden w-max -translate-x-1/2 rounded bg-gray-800 px-2 py-1 text-sm text-white group-hover:block">
+                        View More
+                      </span>
                     </button>
                     <button
-                      className="m-1 rounded  bg-red-500 px-2 py-2 text-white hover:bg-red-700"
+                      className="group m-1 rounded bg-red-500 px-2 py-2 text-white hover:bg-red-700 relative"
                       onClick={() => handleDeleteApplicant(applicant._id)}
                     >
                       <MdDelete className="size-6" />
+                      <span className="absolute left-1/2 bottom-full mb-2 hidden w-max -translate-x-1/2 rounded bg-gray-800 px-2 py-1 text-sm text-white group-hover:block">
+                        Delete
+                      </span>
                     </button>
-
                     <button
                       onClick={() => handleShare(applicant._id)}
-                      className="m-1 rounded-md bg-blue-500 px-2 py-2 text-white hover:bg-blue-600"
+                      className="group m-1 rounded-md bg-blue-500 px-2 py-2 text-white hover:bg-blue-600 relative"
                     >
                       <FaShareAltSquare className="size-6" />
+                      <span className="absolute left-1/2 bottom-full mb-2 hidden w-max -translate-x-1/2 rounded bg-gray-800 px-2 py-1 text-sm text-white group-hover:block">
+                        Share
+                      </span>
                     </button>
                     <button
                       onClick={() => handleNavigate(applicant._id)}
-                      className="m-1 rounded-md bg-blue-500 px-2 py-2 text-white hover:bg-blue-600"
+                      className="group m-1 rounded-md bg-blue-500 px-2 py-2 text-white hover:bg-blue-600 relative"
                     >
                       <MdAssignmentAdd className="size-6" />
+                      <span className="absolute left-1/2 bottom-full mb-2 hidden w-max -translate-x-1/2 rounded bg-gray-800 px-2 py-1 text-sm text-white group-hover:block">
+                        Assign Assisment
+                      </span>
                     </button>
                   </td>
                 </tr>

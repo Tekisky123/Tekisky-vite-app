@@ -20,9 +20,15 @@ import "./App.css";
 import Projects from "./Pages/Projects";
 import PageNotFound from "./Pages/PageNotFound";
 import Alumni from "./Pages/Alumni";
+import { useEffect, useState } from "react";
 
 function App() {
-  const userType = localStorage.getItem("userType");
+  const [userType, setUserType] = useState(localStorage.getItem("userType"));
+
+  useEffect(() => {
+    const storedUserType = localStorage.getItem("userType");
+    setUserType(storedUserType);
+  }, []);
 
   return (
     <div className="App">
