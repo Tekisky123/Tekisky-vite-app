@@ -57,11 +57,11 @@ const Header = () => {
             <div className="w-80 max-w-full px-4 xl:mr-12">
               <Link
                 to="/"
-                className={`header-logo block w-full ${
+                className={`header-logo block w-full main-logo ${
                   sticky ? "py-5 lg:py-2" : "py-8"
                 }`}
               >
-                <img src={logo} alt="Logo" />
+                <img src={logo} alt="Logo" className=""/>
               </Link>
             </div>
             <div className="flex w-full items-center justify-between px-4">
