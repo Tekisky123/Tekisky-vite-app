@@ -28,7 +28,7 @@ const ITCompanySections = () => {
   return (
    <div id="ITCompanySections">
      <section className="container mx-auto p-4">
-      <div className="w-full mx-auto text-center mt-24 mb-24">
+      <div className="w-full mx-auto text-center mt-14 mb-14">
         <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl md:text-[45px] mt-8">
           Offerings
         </h2>
