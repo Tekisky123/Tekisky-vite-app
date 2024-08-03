@@ -96,7 +96,7 @@ const SingleTestimonial = ({ testimonial }) => {
             style={{ width: "100%", height: "100%" }}
           />
         </div>
-        <h1 className="mb-5 text-lg font-semibold text-dark dark:text-white lg:text-base xl:text-lg mt-5">
+        <h1 className="mb-4 mt-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
           {name}
         </h1>
         <p className=" h-40 overflow-hidden pb-8 text-base leading-relaxed text-body-color dark:border-white dark:border-opacity-10 dark:text-white">
@@ -109,13 +109,13 @@ const SingleTestimonial = ({ testimonial }) => {
 
 const Services = () => {
   return (
-    <section className="relative z-10 bg-gray-light py-16 dark:bg-bg-color-dark md:py-20 lg:py-28">
+    <section className="relative z-10  py-16 dark:bg-bg-color-dark md:py-20 lg:py-28" id="services">
       <div className="container">
         <div className={`w-9/12 mb-10 ${"mx-auto text-center"}`}>
           <h2 className="mb-12 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] mt-8">
             Our Services
           </h2>
-          <p className="text-base leading-relaxed text-body-color md:text-lg   text-center">
+          <p className="mt-5 text-justify text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
             At Tekisky Pvt Ltd, we offer a comprehensive range of services to
             meet your digital needs. From web development to data science, our
             team of experts is dedicated to delivering innovative solutions that

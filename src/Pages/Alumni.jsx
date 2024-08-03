@@ -83,7 +83,7 @@ const Alumni = () => {
   }, []);
 
   return (
-    <>
+    <div    id="alumnis">
           <Company />
 
        <div className="w-full mx-auto text-center mb-24 mt-14">
@@ -114,7 +114,7 @@ const Alumni = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

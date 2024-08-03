@@ -5,7 +5,7 @@ import Section2 from "../Components/Section2";
 import Contact from "../Components/Contact";
 import ServicesCards from "../Components/ServicesCards";
 import AnimatedSlider from "../Components/ITCompanySections";
-import WhatWeOffer from "../Components/WhatWeOffer";
+// import WhatWeOffer from "../Components/WhatWeOffer";
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
         id="home"
         className="hero-section relative z-10 overflow-hidden bg-white  pt-[150px] dark:bg-gray-dark md:pb-[20px] md:pt-[150px]  xl:pt-[180px]  2xl:pt-[210px]"
       >
-        <div className="container">
+        <div className="container main-home-bg">
           <div className="-mx-4 flex flex-wrap">
             <div className="order-2 w-full px-4 md:order-1 md:w-1/2">
               <div className="mx-auto mt-[60px] max-w-[800px] text-left  md:text-start">
@@ -61,11 +61,11 @@ const Home = () => {
         </div>
       </section>
       {/* <Slider /> */}
-      <ServicesCards/>
-      <AnimatedSlider/>
-      <WhatWeOffer/>
+      <ServicesCards />
+      <AnimatedSlider />
+      {/* <WhatWeOffer/> */}
       <Section2 />
-      
+
       <Contact />
     </>
   );

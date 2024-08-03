@@ -26,10 +26,11 @@ const sectionsData = [
 
 const ITCompanySections = () => {
   return (
-    <section className="container mx-auto p-4">
+   <div id="ITCompanySections">
+     <section className="container mx-auto p-4">
       <div className="w-full mx-auto text-center mt-24 mb-24">
         <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl md:text-[45px] mt-8">
-          Our Solutions
+          Offerings
         </h2>
       </div>
       <div className="flex flex-col ">
@@ -40,23 +41,24 @@ const ITCompanySections = () => {
               index % 2 !== 0 ? "md:flex-row-reverse" : ""
             } items-center`}
           >
-            <div className="w-full md:w-1/2 p-4">
+            <div className="w-full md:w-1/2 p-4 ">
               <img
                 src={section.imgSrc}
                 alt={section.title}
-                className="w-full h-auto md:h-96 object-contain rounded-lg shadow-md border"
+                className="w-full h-auto md:h-96 object-contain rounded-lg shadow-lg border bg-white"
               />
             </div>
             <div className="md:w-1/2 p-4 text-left">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
                 {section.title}
               </h2>
-              <p className="text-gray-600">{section.description}</p>
+              <p className="mt-5 text-justify text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">{section.description}</p>
             </div>
           </div>
         ))}
       </div>
     </section>
+   </div>
   );
 };
 

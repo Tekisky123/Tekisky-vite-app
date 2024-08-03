@@ -41,11 +41,10 @@ export default {
         },
       },
       transitionDuration: {
-        '700': '700ms',
-        '1000': '1000ms', // Added for smoother animations
+        '1500': '1500ms', // Increased duration for smoother animations
       },
       transitionTimingFunction: {
-        'in-out-cubic': 'cubic-bezier(0.4, 0, 0.2, 1)', // Added for smooth cubic bezier transitions
+        'smooth': 'cubic-bezier(0.25, 0.1, 0.25, 1)', // Smooth transition function
       },
       boxShadow: {
         signUp: '0px 5px 10px rgba(4, 10, 34, 0.2)',
@@ -64,6 +63,15 @@ export default {
       },
       dropShadow: {
         three: '0px 5px 15px rgba(6, 8, 15, 0.05)',
+      },
+      keyframes: {
+        reveal: {
+          '0%': { opacity: 0, transform: 'translateY(20px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        reveal: 'reveal 1.5s smooth 0.3s forwards', // 1.5s duration with smooth transition and 0.3s delay
       },
     },
   },

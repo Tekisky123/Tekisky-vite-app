@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 const project = {
   id: 1,
@@ -12,7 +11,7 @@ const project = {
     technologies: {
       frontend: "React.js",
       backend: "Node.js, Express.js",
-      database: "MongoDB",
+      database: "MongoDB, AWS",
       versionControl: "GitHub",
     },
     features: [
@@ -26,93 +25,46 @@ const project = {
 };
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  const openModal = () => {
-    setSelectedProject(project);
-  };
-
-  const closeModal = () => {
-    setSelectedProject(null);
-  };
-
-  const handleOverlayClick = (e) => {
-    if (e.target.id === "modalOverlay") {
-      closeModal();
-    }
-  };
-
   return (
-    <section className="projects-area w-full py-20 mt-10">
+    <section className="projects-area w-full py-20" id="our-products">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold">Our Product</h2>
-          
+        <div className="text-center mb-12  mt-10">
+          <h2 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">Our Product</h2>
         </div>
         <div className="flex justify-center">
           <div className="project-card bg-white p-4 rounded-lg shadow-md w-full max-w-6xl">
-            <div className="w-full h-64 md:h-96 overflow-hidden rounded-md mb-6 ">
-              <iframe
-                src={project.url}
-                className="w-full  h-full "
-                title={project.name}
-                style={{ border: "none", transform: "scale(1.0)", transformOrigin: "top left"}}
-              ></iframe>
-            </div>
-            <h4 className="text-2xl font-bold mb-4">{project.name}</h4>
-            <p className=" mb-6 underline text-blue-600"><a href="https://tekiskymart.com" target="_blank">Preview Website</a></p>
-            <p className="text-gray-600 mb-6">{project.overview}</p>
-            <h5 className="text-xl font-bold mb-2">Features</h5>
-            <ul className="list-disc pl-5 text-gray-600 mb-6">
+            <h4 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">{project.name}</h4>
+           
+            <p className="mt-5 text-justify text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">{project.overview}</p>
+            <h5 className="text-xl font-bold mb-2 mt-5">Project Overview</h5>
+            <p className="mt-5 text-justify text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">{project.details.summary}</p>
+            <h5 className="text-xl font-bold mb-2 mt-5">Technologies Used</h5>
+            <ul className="list-disc pl-5 mt-5 text-justify text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
+              <li>Frontend: {project.details.technologies.frontend}</li>
+              <li>Backend: {project.details.technologies.backend}</li>
+              <li>Database: {project.details.technologies.database}</li>
+              <li>Version Control: {project.details.technologies.versionControl}</li>
+            </ul>
+            <h5 className="text-xl font-bold mb-2 mt-5">Features</h5>
+            <ul className="list-disc pl-5 mt-5 text-justify text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl mb-6">
               {project.details.features.map((feature, index) => (
                 <li key={index}>{feature}</li>
               ))}
             </ul>
-            <button
-              className="bg-blue-500 text-white px-6 py-3 rounded-md"
-              onClick={openModal}
-            >
-              View Details
-            </button>
+            <p className="mb-6 underline text-blue-600">
+              <a href={project.url} target="_blank" rel="noopener noreferrer">Preview Website</a>
+            </p>
+            <div className="w-full h-64 md:h-96 overflow-hidden rounded-md mb-6">
+              <iframe
+                src={project.url}
+                className="w-full h-full"
+                title={project.name}
+                style={{ border: "none", transform: "scale(1.0)", transformOrigin: "top left" }}
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>
-
-      {selectedProject && (
-        <div
-          id="modalOverlay"
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[990]"
-          onClick={handleOverlayClick}
-        >
-          <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl w-full mx-auto overflow-y-auto max-h-full">
-            <div className="flex justify-between items-center mb-4">
-              <h4 className="text-2xl font-bold">{selectedProject.name}</h4>
-              <button
-                className="bg-blue-500 text-white px-6 py-3 rounded-md"
-                onClick={closeModal}
-              >
-                Close
-              </button>
-            </div>
-
-            <h5 className="text-xl font-bold mb-2">Project Overview</h5>
-            <p className="text-gray-600 mb-6">{selectedProject.details.summary}</p>
-            <h5 className="text-xl font-bold mb-2">Technologies Used</h5>
-            <ul className="list-disc pl-5 text-gray-600 mb-6">
-              <li>Frontend: {selectedProject.details.technologies.frontend}</li>
-              <li>Backend: {selectedProject.details.technologies.backend}</li>
-              <li>Database: {selectedProject.details.technologies.database}</li>
-              <li>Version Control: {selectedProject.details.technologies.versionControl}</li>
-            </ul>
-            <h5 className="text-xl font-bold mb-2">Features</h5>
-            <ul className="list-disc pl-5 text-gray-600 mb-6">
-              {selectedProject.details.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
     </section>
   );
 };

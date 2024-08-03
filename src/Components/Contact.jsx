@@ -1,9 +1,9 @@
-import  { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import LoaderSmall from "../Loader/LoaderSmall";
-import img1 from "../images/about/Contact us-bro.svg"
-import baseURL from "../Common/Api"
+import img1 from "../images/about/Contact us-bro.svg";
+import baseURL from "../Common/Api";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -47,15 +47,12 @@ const Contact = () => {
     setSubmitting(true);
     setShowLoader(true);
     try {
-      const response = await axios.post(
-        `${baseURL}email/sendEmail`,
-        formData
-      );
+      const response = await axios.post(`${baseURL}email/sendEmail`, formData);
       if (response.status === 200) {
         Swal.fire({
           icon: "success",
           title: "Success!",
-          text: "Email sent successfully, Check Your Email inbox",
+          text: "Thanks For Contacting With Us ! You Will Get Back Shortly",
         }).then(() => {
           setFormData({
             name: "",
@@ -91,23 +88,18 @@ const Contact = () => {
   const validateForm = () => {
     const { name, email, mobile, message } = formData;
     const errors = {
-      name: name.trim() ? "" : "Name is required",
-      email: email.trim() ? "" : "Email address is required",
+      name: name.trim() ? "" : "Name is required*",
+      email: email.trim() ? "" : "Email address is required*",
       mobile: mobile.trim()
         ? mobile.length === 10
           ? ""
-          : "Mobile number must be 10 digits"
-        : "Mobile is required",
-      message: message.trim() ? "" : "Message is required",
+          : "Mobile number must be 10 digits*"
+        : "Mobile is required*",
+      message: message.trim() ? "" : "Message is required*",
     };
 
     setFormData((prevFormData) => ({ ...prevFormData, errors }));
     return Object.values(errors).every((error) => !error);
-  };
-
-  const allFieldsFilled = () => {
-    const { name, email, mobile, message } = formData;
-    return name && email && mobile && message;
   };
 
   return (
@@ -125,10 +117,10 @@ const Contact = () => {
               data-wow-delay=".15s"
             >
               <h2 className="mb-3 text-2xl font-bold text-black dark:text-white sm:text-3xl lg:text-2xl xl:text-3xl">
-                Need Help? Mail Us
+              Connect with us by filling below details 
               </h2>
               <p className="mb-12 text-base font-medium text-body-color">
-                Our support team will get back to you ASAP via email.
+                {/* Our support team will get back to you ASAP via email. */}
               </p>
 
               <form onSubmit={handleSubmit}>
@@ -249,16 +241,17 @@ const Contact = () => {
                   <div className="w-full px-4">
                     <button
                       type="submit"
-                      disabled={submitting || !allFieldsFilled()}
-                      className="rounded-lg bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark "
+                      disabled={submitting}
+                      className="rounded-lg bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 disabled:bg-opacity-50"
                     >
-                      {submitting ? "Submitting..." : "Submit Message"}
+                      Send Message
                     </button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
+
           <div className="w-full px-4 lg:w-6/12 xl:w-6/12">
             {/* <ContactBox /> */}
             <div className="relative z-10 rounded-sm bg-white shadow-three dark:bg-gray-dark sm:p-11 lg:p-8 xl:p-11">

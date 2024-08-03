@@ -1,14 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bree+Serif&family=Exo+2&family=Freeman&family=Macondo&family=Madimi+One&family=Merienda&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital@1&family=Protest+Riot&family=Workbench&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bree+Serif&family=Exo+2&family=Freeman&family=Macondo&family=Madimi+One&family=Merienda&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital@1&family=Protest+Riot&family=Workbench&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"); */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   font-family: "Freeman", sans-serif !important;
-  font-weight: 400 !important;
+  /* font-weight: 10 !important; */
   background-color: #fcfcfc;
+  
 }
+#home{
+  background-image: url(./images/bg.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#features,#alumnis,#our-products,#services,#about,#delivered,#story,#ITCompanySections,#contact{
+  background-image: url(./images/bg.svg);
+  /* background-repeat: no-repeat; */
+  background-size: contain;
+}
+
+
 ::selection {
   background-color: #000;
   color: white;
@@ -428,3 +442,4 @@ input[type="number"]::-ms-reveal {
 .rotateY {
   animation: rotateYAnimation 1s infinite ease-in-out;
 }
+

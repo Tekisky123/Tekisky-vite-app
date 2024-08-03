@@ -1,4 +1,3 @@
-import React, {  useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import fullStackSkills from "../Components/fullStackSkills";
@@ -6,8 +5,8 @@ import Loader from "../Loader/Loader";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import CollegeNames from "../Common/CollegeNames.json";
-import baseURL from "../Common/Api"
-
+import baseURL from "../Common/Api";
+import { useState } from "react";
 
 const ConsultancyForm = () => {
   const [loading, setLoading] = useState(false);
@@ -143,10 +142,7 @@ const ConsultancyForm = () => {
             formDataToSend.append(key, values[key]);
           }
         }
-        await axios.post(
-          `${baseURL}consultancy/uploadResume`,
-          formDataToSend
-        );
+        await axios.post(`${baseURL}consultancy/uploadResume`, formDataToSend);
         localStorage.removeItem("formData");
         Swal.fire({
           icon: "success",
@@ -176,7 +172,7 @@ const ConsultancyForm = () => {
   };
 
   const filterSkills = (value) => {
-    if (value.trim() === '') {
+    if (value.trim() === "") {
       setFilteredSkills([]);
     } else {
       const filtered = fullStackSkills.filter((skill) =>
@@ -188,15 +184,15 @@ const ConsultancyForm = () => {
 
   const handleSkillSelect = (skill) => {
     setSelectedSkills([...selectedSkills, skill]);
-    setSearchTerm('');
+    setSearchTerm("");
     setFilteredSkills([]);
-    formik.setFieldValue('skills', [...selectedSkills, skill]); // Update formik skills field
+    formik.setFieldValue("skills", [...selectedSkills, skill]); // Update formik skills field
   };
 
   const handleSkillRemove = (skill) => {
     setSelectedSkills(selectedSkills.filter((s) => s !== skill));
     formik.setFieldValue(
-      'skills',
+      "skills",
       selectedSkills.filter((s) => s !== skill)
     ); // Update formik skills field
   };
@@ -205,10 +201,10 @@ const ConsultancyForm = () => {
     const inputText = event.target.value;
     setSelectedCollege(inputText); // Update selected college
 
-    if (inputText.trim() === '') {
+    if (inputText.trim() === "") {
       setFilteredColleges([]);
     } else {
-      const filtered = CollegeNames['Nanded-District'].filter((college) =>
+      const filtered = CollegeNames["Nanded-District"].filter((college) =>
         college.NameoftheCollege.toLowerCase().includes(inputText.toLowerCase())
       );
       setFilteredColleges(filtered);
@@ -218,7 +214,7 @@ const ConsultancyForm = () => {
   const handleOptionClick = (collegeName) => {
     setSelectedCollege(collegeName);
     setFilteredColleges([]);
-    formik.setFieldValue('referredBy', collegeName); // Update formik referredBy field
+    formik.setFieldValue("referredBy", collegeName); // Update formik referredBy field
   };
   const generateYears = () => {
     const currentYear = new Date().getFullYear();
@@ -240,19 +236,19 @@ const ConsultancyForm = () => {
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
             <div className={`w-full ${"mx-auto text-center"} mb-20`}>
-              <h2 className="mb-16 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-[45px] mt-8">
-                Upload Your Resume
-              </h2>
-              <p className="text-start leading-relaxed text-body-color md:text-lg">
+              <p className="text-start leading-relaxed text-body-color md:text-lg ">
                 We invite all Professionals seeking exciting career
                 opportunities to submit their resumes here. Take the first step
                 towards your dream job by uploading your resume using the form
                 below. Our dedicated team will review your submission and
-                consider you for suitable positions within our company. Don't
-                miss out on the chance to join a dynamic and innovative team at
-                Tekisky Pvt Ltd. Submit your resume now and embark on a
-                rewarding career journey with us!
+                consider you for suitable positions within our company.
+                Don&apos;t miss out on the chance to join a dynamic and
+                innovative team at Tekisky Pvt Ltd. Submit your resume now and
+                embark on a rewarding career journey with us!
               </p>
+              <h3 className=" text-lg text-start  leading-tight text-black dark:text-white  font-bold  mt-8">
+                Submit Your Resume for Exciting Career Opportunities
+              </h3>
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
