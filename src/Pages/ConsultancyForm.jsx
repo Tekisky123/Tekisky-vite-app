@@ -234,7 +234,7 @@ const ConsultancyForm = () => {
       >
         <div className=""></div>
         <div className="space-y-12">
-          <div className="border-b border-gray-900/10 pb-12">
+          <div className="border-b border-gray-900/10 pb-12 ">
             <div className={`w-full ${"mx-auto text-center"} mb-20`}>
               <p className="text-start leading-relaxed text-body-color md:text-lg ">
                 We invite all Professionals seeking exciting career
@@ -252,14 +252,14 @@ const ConsultancyForm = () => {
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="sm:col-span-3">
+              <div className=" col-span-full">
                 <label
                   htmlFor="employeeNumber"
                   className="block text-sm font-medium leading-6 text-black text-gray-900 dark:text-white"
                 >
                   Tekisky Employee Number{" "}
                   {/* <span className="text-red-500">*</span>{" "} */}
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 ">
                     (Leave it blank if you are not an Employee of Tekisky)
                   </p>
                 </label>
@@ -285,7 +285,7 @@ const ConsultancyForm = () => {
                 </div>
               </div>
 
-              <div className="sm:col-span-3">
+              <div className=" col-span-full">
                 <label
                   htmlFor="fullName"
                   className="block text-sm font-medium leading-6 text-black text-gray-900 dark:text-white"
