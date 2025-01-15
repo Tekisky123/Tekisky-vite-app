@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import LoaderSmall from "../Loader/LoaderSmall";
-// import { useNavigate } from "react-router-dom";
 import baseURL from "../Common/Api";
 import { LuEye, LuEyeOff } from "react-icons/lu";
+import CryptoJS from "crypto-js"; // Import crypto-js
 
 const Login = () => {
-  // const navigate = useNavigate();
   const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
   const [showLoader, setShowLoader] = useState(false);
@@ -61,10 +60,18 @@ const Login = () => {
 
     setShowLoader(true);
     try {
+      // Encrypt payload
+      const secretKey = 'test'; 
+      const encryptedData = CryptoJS.AES.encrypt(
+        JSON.stringify({ mobileNumber, password }),
+        secretKey
+      ).toString();
+      
+
       const response = await axios.post(`${baseURL}user/login`, {
-        mobileNumber,
-        password,
+        data: encryptedData,
       });
+
       const { token, userType, user } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("userType", userType);
@@ -79,8 +86,7 @@ const Login = () => {
         timer: 1500,
       });
 
-      // Reload the page and navigate based on userType
-      window.location.reload(); // Reload the page to ensure state is updated
+      window.location.reload();
       window.location.replace(
         userType === "admin"
           ? "/dashboard"

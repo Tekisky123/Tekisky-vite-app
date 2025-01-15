@@ -1,10 +1,11 @@
 import softcadia from "../images/projects/softcadia.png";
 import affiliatemarketing from "../images/projects/affiliatemarketing.avif";
 import crecent from "../images/projects/crecent.png";
-import mhf from "../images/projects/mhf.png";
+import asmak from "../images/projects/asmak.png";
 import mmh from "../images/projects/mmh.png";
 import mart from "../images/projects/mart.png";
 import shama from "../images/projects/shama.webp";
+import selectskillset from "../images/projects/selectskillset.png"
 
 const DeliveredProjects = () => {
   const projects = [
@@ -27,10 +28,10 @@ const DeliveredProjects = () => {
       link: "http://www.thecrescentfoundation.in/",
     },
     {
-      title: "MHF Mujtaba Helping Foundation",
-      description: "Card registration system",
-      imageUrl: mhf,
-      link: "https://mhfglobal.com/",
+      title: "Asmak Muscat Int'l.",
+      description: "Oman-Based Seafood Industry Website",
+      imageUrl: asmak,
+      link: "https://asmakmct.com/",
     },
     {
       title: "Shama NGO",
@@ -49,6 +50,12 @@ const DeliveredProjects = () => {
       description: "E-commerce platform",
       imageUrl: mart,
       link: "https://tekiskymart.com/",
+    },
+    {
+      title: "SelectSkillSet",
+      description: " Job Portal Website",
+      imageUrl: selectskillset,
+      link: "https://select-skill-set-testing.vercel.app/",
     },
   ];
 

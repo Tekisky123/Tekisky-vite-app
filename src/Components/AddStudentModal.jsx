@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import LoaderSmall from "../Loader/LoaderSmall";
-import baseURL from "../Common/Api"
+import baseURL from "../Common/Api";
 
-
-const AddStudentModal = ({ showModal, onClose,fetchStudents }) => {
+const AddStudentModal = ({ showModal, onClose, fetchStudents }) => {
   const [formData, setFormData] = useState({
     name: "",
     gender: "",
@@ -15,7 +14,6 @@ const AddStudentModal = ({ showModal, onClose,fetchStudents }) => {
   });
   const [students, setStudents] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,19 +68,19 @@ const AddStudentModal = ({ showModal, onClose,fetchStudents }) => {
     setShowLoader(false);
     fetchStudents();
   };
-  
-  
 
   return (
     <>
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 model-body ">
-           {showLoader && <LoaderSmall />}
+          {showLoader && <LoaderSmall />}
           <div className="rounded-lg bg-white p-8 shadow-lg student-model  bg-white  dark:bg-dark dark:text-white border">
             <h2 className="mb-4 text-2xl font-semibold">Add Student</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label className="mb-2 block text-gray-700 text-body-color dark:text-body-color-dark ">Name</label>
+                <label className="mb-2 block text-gray-700 text-body-color dark:text-body-color-dark ">
+                  Name
+                </label>
                 <input
                   type="text"
                   name="name"
@@ -93,7 +91,9 @@ const AddStudentModal = ({ showModal, onClose,fetchStudents }) => {
               </div>
 
               <div className="mb-4">
-                <label className="mb-2 block text-gray-700 text-body-color dark:text-body-color-dark">Gender</label>
+                <label className="mb-2 block text-gray-700 text-body-color dark:text-body-color-dark">
+                  Gender
+                </label>
                 <select
                   name="gender"
                   value={formData.gender}
@@ -107,7 +107,9 @@ const AddStudentModal = ({ showModal, onClose,fetchStudents }) => {
               </div>
 
               <div className="mb-4">
-                <label className="mb-2 block text-gray-700 text-body-color dark:text-body-color-dark">Education</label>
+                <label className="mb-2 block text-gray-700 text-body-color dark:text-body-color-dark">
+                  Education
+                </label>
                 <input
                   type="text"
                   name="education"
@@ -118,7 +120,9 @@ const AddStudentModal = ({ showModal, onClose,fetchStudents }) => {
               </div>
 
               <div className="mb-4">
-                <label className="mb-2 block text-gray-700 text-body-color dark:text-body-color-dark">Company Name</label>
+                <label className="mb-2 block text-gray-700 text-body-color dark:text-body-color-dark">
+                  Company Name
+                </label>
                 <input
                   type="text"
                   name="companyName"
@@ -129,7 +133,9 @@ const AddStudentModal = ({ showModal, onClose,fetchStudents }) => {
               </div>
 
               <div className="mb-4">
-                <label className="mb-2 block text-gray-700 text-body-color dark:text-body-color-dark">Designation</label>
+                <label className="mb-2 block text-gray-700 text-body-color dark:text-body-color-dark">
+                  Designation
+                </label>
                 <input
                   type="text"
                   name="designation"

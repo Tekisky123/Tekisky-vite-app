@@ -28,10 +28,30 @@ function App() {
   useEffect(() => {
     const storedUserType = localStorage.getItem("userType");
     setUserType(storedUserType);
+
+    const clearLocalStorageKeys = () => {
+      const keysToRemove = [
+        "collegeName",
+        "failedAttempts",
+        "token",
+        "userId",
+        "userType"
+      ];
+
+      keysToRemove.forEach((key) => {
+        localStorage.removeItem(key);
+      });
+    };
+
+    const intervalId = setInterval(() => {
+      clearLocalStorageKeys();
+    }, 72000000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <div className="App ">
+    <div className="App">
       <Header />
       <ScrollUp />
       <Routes>

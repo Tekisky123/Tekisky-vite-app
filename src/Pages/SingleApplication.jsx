@@ -7,7 +7,7 @@ import baseURL from "../Common/Api"
 
 
 const SingleApplication = () => {
-    const [application, setApplication] = useState(null);
+    const [application, setApplication] = useState("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
   

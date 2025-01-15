@@ -327,7 +327,7 @@ const ConsultancyApplications = () => {
                   </p>
                   <p className="mb-1 text-gray-700">
                     <strong>Years of Experience:</strong>{" "}
-                    {applicant.yearsOfExperience}
+                    {applicant.yearsOfExperience} || {applicant.workStatus}
                   </p>
                   <p className="mb-1 text-gray-700">
                     <strong>Skills:</strong>{" "}
@@ -361,13 +361,13 @@ const ConsultancyApplications = () => {
                       {applicant.status}
                     </div>
                   </p>
-                  <Link
+                  <a
                     className="mb-4 block text-blue-500 hover:underline"
                     href={applicant.resumeUrl}
                     target="_blank"
                   >
                     Download Resume
-                  </Link>
+                  </a>
                 </div>
                 <div className="flex space-x-2">
                   <button
@@ -475,7 +475,7 @@ const ConsultancyApplications = () => {
                   <td className="border px-4 py-2">{applicant.referredBy}</td>
 
                   <td className="border px-4 py-2">
-                    {applicant.yearsOfExperience}
+                 {applicant.workStatus}   {applicant.yearsOfExperience}
                   </td>
                   <td className="w-80 border px-4 py-2">
                     <div className="w-75 flex flex-wrap gap-1 ">
@@ -511,13 +511,13 @@ const ConsultancyApplications = () => {
                   </td>
 
                   <td className="border px-8 py-2 ">
-                    <Link
+                    <a
                       className="resume-download"
                       target="_blank"
                       href={applicant.resumeUrl}
                     >
                       <FaFileDownload className="size-10 text-green-500" />
-                    </Link>
+                    </a>
                   </td>
 
                   <td className="d-flex w-40 border px-4 py-2 relative">
@@ -690,6 +690,22 @@ const ConsultancyApplications = () => {
                           </tr>
                           <tr>
                             <td className="px-2  py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                              Mock Interview Date
+                            </td>
+                            <td className="px-2  py-4 whitespace-nowrap text-sm text-gray-500">
+                              {selectedApplicant.mockInterviewDate}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="px-2  py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                              Mock Interview Time
+                            </td>
+                            <td className="px-2  py-4 whitespace-nowrap text-sm text-gray-500">
+                              {selectedApplicant.mockInterviewTime}
+                            </td>
+                          </tr>
+                          {/* <tr>
+                            <td className="px-2  py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                               Interested In Mock Interview:
                             </td>
                             <td className="px-2  py-4 whitespace-nowrap text-sm text-gray-500">
@@ -697,7 +713,7 @@ const ConsultancyApplications = () => {
                                 ? "Yes"
                                 : "No"}
                             </td>
-                          </tr>
+                          </tr> */}
                         </tbody>
                       </table>
                     </div>

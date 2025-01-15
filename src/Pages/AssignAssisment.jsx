@@ -42,7 +42,7 @@ const AssignAssisment = () => {
         }
       );
 
-      const { fullName, yearsOfExperience, skills } = response.data;
+      const { fullName, yearsOfExperience,workStatus, skills } = response.data;
 
       // Split skills string into array
       const parsedSkills = skills[0].split(",");
@@ -50,6 +50,7 @@ const AssignAssisment = () => {
       const info = {
         fullName,
         yearsOfExperience,
+        workStatus,
         skills: parsedSkills,
       };
 
@@ -69,29 +70,33 @@ const AssignAssisment = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+  
     if (name === "customTask" || name === "assessmentDeadline" || name === "assessmentNote") {
       setFormData({
         ...formData,
         [name]: value,
       });
-    } else {
-      const selectedAssignments =
-        assignmentsData[formData.selectedAssessmentCategory];
+    } else if (name === "assessmentTask") {
+      const selectedAssignments = assignmentsData[formData.selectedAssessmentCategory];
       const selectedAssignment = selectedAssignments.find(
         (assignment) => assignment.title === value
       );
-      const selectedDescription = selectedAssignment
-        ? selectedAssignment.description
-        : "";
-
+      const selectedDescription = selectedAssignment ? selectedAssignment.description : "";
+  
       setFormData({
         ...formData,
-        [name]: value,
-        assessmentDescription: selectedDescription,
+        assessmentTask: value,
+        assessmentDescription: selectedDescription, // Set the description for the selected task
+      });
+    } else if (name === "assessmentDescription") {
+      setFormData({
+        ...formData,
+        assessmentDescription: value, // Directly update with the new value typed by the user
       });
     }
   };
+  
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -147,7 +152,7 @@ const AssignAssisment = () => {
                 </h3>
                 <h3 className=" font-medium">
                   <span className="font-bold">Years of Experience:</span>{" "}
-                  {applicantInfo.yearsOfExperience}
+                    {applicantInfo.yearsOfExperience}{applicantInfo.workStatus}
                 </h3>
                 <h3 className=" font-medium">
                   <span className="font-bold">Skills:</span>{" "}

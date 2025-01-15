@@ -62,7 +62,9 @@ const ConsultancyForm = () => {
       .max(100, "College name must be less than 100 characters.")
       .nullable(),
     yearOfPassing: Yup.string().required("Year of passing is required"),
-    skills: Yup.array().required("Skills are required"),
+   skills: Yup.array()
+    .min(1, 'At least one skill is required')
+    .of(Yup.string().trim().required('Skill cannot be empty or whitespace')),
     workStatus: Yup.string().required("Work status is required"),
     yearsOfExperience: Yup.string().nullable(),
     referredBy: Yup.string().nullable(),
@@ -166,11 +168,18 @@ const ConsultancyForm = () => {
   });
 
   const handleSkillChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value.trim(); // Trim leading/trailing spaces
     setSearchTerm(value);
     filterSkills(value);
+  
+    if (value === "" || !value) {
+      formik.setFieldError("skills", "Skill cannot be empty or whitespace");
+    } else {
+      formik.setFieldValue("skills", value, true);
+    }
   };
-
+  
+  
   const filterSkills = (value) => {
     if (value.trim() === "") {
       setFilteredSkills([]);
@@ -855,7 +864,7 @@ const ConsultancyForm = () => {
 
           <div className="col-span-full mb-10">
             <h2 className="mb-4 block text-lg text-black dark:text-white">
-              Carrier Discussion
+            Career  Discussion
             </h2>
             <div className="text-yellow-700 mb-4 flex items-start space-x-2 rounded-md border-l-4 border-yellow bg-red-100 p-4">
               <svg
