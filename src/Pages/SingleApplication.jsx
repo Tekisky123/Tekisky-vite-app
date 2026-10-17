@@ -134,9 +134,20 @@ const SingleApplication = () => {
           <h1 className="mb-6 text-center text-3xl font-bold text-gray-800">
             Application Details
           </h1>
-          <div className="flex w-full justify-end">
+          <div className="flex w-full justify-end items-center gap-3 mb-2">
+            {application.resumeUrl && (
+              <a
+                href={application.resumeUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-300 bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-700 hover:bg-emerald-100 transition shadow-sm"
+              >
+                <span>View Uploaded Resume</span>
+              </a>
+            )}
             <button
               onClick={downloadPDF}
+              title="Download Profile Summary PDF"
               className="bg-white-500 hover:bg-white-700 rounded px-4 py-2 font-bold text-white"
             >
               <svg
