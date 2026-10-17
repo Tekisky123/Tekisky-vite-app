@@ -150,7 +150,7 @@ const TeacherDashboard = () => {
                   {application.mobileNumber}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <a href={application.resumeUrl}>
+                  <a href={application.resumeUrl} target="_blank" rel="noreferrer" title="Download / View Resume">
                     <FaFileDownload className="text-blue-600 text-3xl" />
                   </a>
                 </td>
@@ -202,7 +202,7 @@ const TeacherDashboard = () => {
               </p>
             </div>
             <div className="flex items-center justify-between">
-              <a href={application.resumeUrl}>
+              <a href={application.resumeUrl} target="_blank" rel="noreferrer" title="Download / View Resume">
                 <FaFileDownload className="text-blue-600 text-3xl" />
               </a>
               <button
@@ -407,7 +407,14 @@ const TeacherDashboard = () => {
                               Resume:
                             </td>
                             <td className="px-4  py-4 whitespace-nowrap text-sm text-gray-500">
-                              <a href={selectedApplication.resumeUrl}>resume</a>
+                              <a
+                                href={selectedApplication.resumeUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-blue-600 underline font-medium hover:text-blue-800"
+                              >
+                                View Resume
+                              </a>
                             </td>
                           </tr>
                         </tbody>
