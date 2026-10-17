@@ -178,12 +178,40 @@ const SingleApplication = () => {
                     <td className="px-4 py-2">{application.employeeNumber}</td>
                   </tr>
                   <tr className="bg-gray-200">
+                    <td className="px-4 py-2 font-semibold">Candidate Category</td>
+                    <td className="px-4 py-2 font-semibold text-[#0092d5]">{application.candidateCategory || "Experienced"}</td>
+                  </tr>
+                  {application.jobTitle && (
+                    <tr>
+                      <td className="px-4 py-2 font-semibold">Applied Position</td>
+                      <td className="px-4 py-2 font-semibold text-gray-800">{application.jobTitle}</td>
+                    </tr>
+                  )}
+                  {application.primarySkill && (
+                    <tr className="bg-gray-200">
+                      <td className="px-4 py-2 font-semibold">Primary Technical Skill</td>
+                      <td className="px-4 py-2">{application.primarySkill}</td>
+                    </tr>
+                  )}
+                  {application.currentLocation && (
+                    <tr>
+                      <td className="px-4 py-2 font-semibold">Location (Current / Preferred)</td>
+                      <td className="px-4 py-2">{application.currentLocation} / {application.preferredLocation} ({application.preferredWorkMode})</td>
+                    </tr>
+                  )}
+                  {application.noticePeriod && (
+                    <tr className="bg-gray-200">
+                      <td className="px-4 py-2 font-semibold">Notice Period</td>
+                      <td className="px-4 py-2">{application.noticePeriod}</td>
+                    </tr>
+                  )}
+                  <tr>
                     <td className="px-4 py-2 font-semibold">Work Status</td>
                     <td className="px-4 py-2">{application.workStatus}</td>
                   </tr>
-                  <tr>
+                  <tr className="bg-gray-200">
                     <td className="px-4 py-2 font-semibold">Years of Experience</td>
-                    <td className="px-4 py-2">{application.yearsOfExperience}</td>
+                    <td className="px-4 py-2">{application.yearsOfExperience || application.relevantExperience || "N/A"}</td>
                   </tr>
                 </tbody>
               </table>

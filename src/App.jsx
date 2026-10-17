@@ -69,18 +69,18 @@ function App() {
         <Route path="/singleApplication/:id" element={<SingleApplication />} />
 
         {/* Protected Routes */}
-        {userType === "admin" && (
-          <Route
-            path="/dashboard"
-            element={<ProtectedRoute element={Dashboard} />}
-          />
-        )}
-        {userType === "admin" && (
-          <Route
-            path="/assign-Assisment/:id"
-            element={<ProtectedRoute element={AssignAssisment} />}
-          />
-        )}
+        <Route
+          path="/dashboard"
+          element={<ProtectedRoute element={Dashboard} />}
+        />
+        <Route
+          path="/admin/jobs"
+          element={<ProtectedRoute element={Dashboard} />}
+        />
+        <Route
+          path="/assign-Assisment/:id"
+          element={<ProtectedRoute element={AssignAssisment} />}
+        />
         {userType === "teacher" && (
           <Route
             path="/teacherDashboard/:userId"
