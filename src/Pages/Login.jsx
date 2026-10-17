@@ -7,7 +7,7 @@ import { LuEye, LuEyeOff } from "react-icons/lu";
 import CryptoJS from "crypto-js"; // Import crypto-js
 
 const Login = () => {
-  const [mobileNumber, setMobileNumber] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [showLoader, setShowLoader] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -32,19 +32,19 @@ const Login = () => {
   };
 
   const validateForm = () => {
-    if (!mobileNumber || !password) {
+    if (!identifier.trim() || !password) {
       Swal.fire({
         icon: "warning",
         title: "Validation Error",
-        text: "Please enter both mobile number and password.",
+        text: "Please enter both your email address (or mobile number) and password.",
       });
       return false;
     }
-    if (!/^\d{10}$/.test(mobileNumber)) {
+    if (identifier.includes("@") && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identifier.trim())) {
       Swal.fire({
         icon: "warning",
         title: "Validation Error",
-        text: "Please enter a valid 10-digit mobile number.",
+        text: "Please enter a valid email address.",
       });
       return false;
     }
@@ -60,16 +60,24 @@ const Login = () => {
 
     setShowLoader(true);
     try {
-      // Encrypt payload
-      const secretKey = 'test'; 
+      const trimmedIdentifier = identifier.trim();
+      const loginPayload = {
+        identifier: trimmedIdentifier,
+        email: trimmedIdentifier,
+        mobileNumber: trimmedIdentifier,
+        password,
+      };
+
+      // Encrypt payload for backwards compatibility
+      const secretKey = "test";
       const encryptedData = CryptoJS.AES.encrypt(
-        JSON.stringify({ mobileNumber, password }),
+        JSON.stringify(loginPayload),
         secretKey
       ).toString();
-      
 
       const response = await axios.post(`${baseURL}user/login`, {
         data: encryptedData,
+        ...loginPayload,
       });
 
       const { token, userType, user } = response.data;
@@ -153,25 +161,18 @@ const Login = () => {
                 <form onSubmit={handleLogin}>
                   <div className="mb-8">
                     <label
-                      htmlFor="mobileNumber"
+                      htmlFor="identifier"
                       className="mb-3 block text-sm text-dark dark:text-white"
                     >
-                      Your Mobile Number
+                      Email Address or Mobile Number
                     </label>
                     <input
-                      type="tel"
-                      name="mobileNumber"
-                      value={mobileNumber}
-                      onChange={(e) => {
-                        const regex = /^[0-9]{0,10}$/;
-                        if (
-                          regex.test(e.target.value) ||
-                          e.target.value === ""
-                        ) {
-                          setMobileNumber(e.target.value);
-                        }
-                      }}
-                      placeholder="Enter your Mobile Number"
+                      type="text"
+                      id="identifier"
+                      name="identifier"
+                      value={identifier}
+                      onChange={(e) => setIdentifier(e.target.value)}
+                      placeholder="e.g. admin@tekisky.com or 10-digit mobile"
                       className="border-stroke w-full rounded-lg border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
